@@ -16,10 +16,12 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     private Dictionary<PlayerRef, NetworkObject> _spawnedCharacters = new();
 
     private bool _mouseButton0;
+    private bool _mouseButton1;
 
     private void Update()
     {
-        _mouseButton0 = _mouseButton0 | Input.GetMouseButton(0);
+        _mouseButton0 = _mouseButton0 || Input.GetMouseButton(0);
+        _mouseButton1 = _mouseButton1 || Input.GetMouseButton(1);
     }
 
     private async void StartGame(GameMode mode)
@@ -103,6 +105,10 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
             data.buttons |= NetworkInputData.MOUSEBUTTON1;
         _mouseButton0 = false;
 
+        if (_mouseButton1)
+            data.buttons |= NetworkInputData.MOUSEBUTTON2;
+        _mouseButton1 = false;
+
         input.Set(data);
     }
 
@@ -167,6 +173,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
 public struct NetworkInputData : INetworkInput
 {
     public const byte MOUSEBUTTON1 = 0x01;
+    public const byte MOUSEBUTTON2 = 0x02;
 
     public byte buttons;
 

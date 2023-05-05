@@ -5,6 +5,9 @@ using Fusion;
 
 public class PhysxBall : NetworkBehaviour
 {
+    [SerializeField]
+    private float _lifeTime = 5.0f;
+
     [Networked]
     private TickTimer life { get; set; }
 
@@ -12,7 +15,7 @@ public class PhysxBall : NetworkBehaviour
 
     public void Init(Vector3 forward)
     {
-        life = TickTimer.CreateFromSeconds(Runner, 5.0f);
+        life = TickTimer.CreateFromSeconds(Runner, _lifeTime);
         _rb = GetComponent<Rigidbody>();
         _rb.velocity = forward;
     }

@@ -5,12 +5,15 @@ using Fusion;
 
 public class Ball : NetworkBehaviour
 {
+    [SerializeField]
+    private float _lifeTime = 5.0f;
+
     [Networked]
     private TickTimer life { get; set; }
 
     public void Init()
     {
-        life = TickTimer.CreateFromSeconds(Runner, 5.0f);
+        life = TickTimer.CreateFromSeconds(Runner, _lifeTime);
     }
 
     public override void FixedUpdateNetwork()

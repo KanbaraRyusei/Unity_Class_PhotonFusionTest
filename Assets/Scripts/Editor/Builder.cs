@@ -8,7 +8,7 @@ public static class Builder
 {
     private static readonly string BuildDirectoryName = "Builds";
 
-    [MenuItem("あ部ジェクト/Build And Run CurrentScene", false, 1)]
+    [MenuItem("Object/Build And Run CurrentScene", false, 1)]
     private static void BuildAndRunPhotonTutorial()
     {
         var currentSceneName = SceneManager.GetActiveScene().name;

@@ -242,6 +242,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
   _prefabBall: {fileID: 8317655627256842257, guid: 5ab762c8b3ddae746886c52edf589f2a, type: 3}
+  _prefabPhysxBall: {fileID: 2077509368410785943, guid: 80f6e73ff93d5d14088bf49caab3fab6, type: 3}
+  _delayTime: 0.5
+  _direction: 0
 --- !u!143 &905755279091699838
 CharacterController:
   m_ObjectHideFlags: 0

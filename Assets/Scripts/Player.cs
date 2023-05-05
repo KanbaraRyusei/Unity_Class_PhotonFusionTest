@@ -11,6 +11,9 @@ public class Player : NetworkBehaviour
     [SerializeField]
     private PhysxBall _prefabPhysxBall;
 
+    [SerializeField]
+    private float _delayTime = 0.5f;
+
     [Networked]
     private TickTimer delay { get; set; }
 
@@ -18,10 +21,13 @@ public class Player : NetworkBehaviour
 
     private Vector3 _forward;
 
+    private Vector3 _up;
+
     private void Awake()
     {
         _ccp = GetComponent<NetworkCharacterControllerPrototype>();
         _forward = transform.forward;
+        _up = transform.up;
     }
 
     public override void FixedUpdateNetwork()
@@ -38,7 +44,7 @@ public class Player : NetworkBehaviour
             {
                 if ((data.buttons & NetworkInputData.MOUSEBUTTON1) != 0)
                 {
-                    delay = TickTimer.CreateFromSeconds(Runner, 0.5f);
+                    delay = TickTimer.CreateFromSeconds(Runner, _delayTime);
                     Runner.Spawn(_prefabBall,
                       transform.position + _forward,
                       Quaternion.LookRotation(_forward),
@@ -50,14 +56,14 @@ public class Player : NetworkBehaviour
                 }
                 else if ((data.buttons & NetworkInputData.MOUSEBUTTON2) != 0)
                 {
-                    delay = TickTimer.CreateFromSeconds(Runner, 0.5f);
+                    delay = TickTimer.CreateFromSeconds(Runner, _delayTime);
                     Runner.Spawn(_prefabPhysxBall,
-                      transform.position + _forward,
-                      Quaternion.LookRotation(_forward),
+                      transform.position + _up,
+                      Quaternion.LookRotation(_up),
                       Object.InputAuthority,
                       (runner, o) =>
                       {
-                          o.GetComponent<PhysxBall>().Init(10 * _forward);
+                          o.GetComponent<PhysxBall>().Init(10 * _up);
                       });
                 }
             }

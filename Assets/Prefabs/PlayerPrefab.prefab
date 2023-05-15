@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: -5048118352666361712}
   - component: {fileID: 905755279091699838}
   - component: {fileID: 8606982870602175156}
+  - component: {fileID: 4814457367942002039}
   m_Layer: 0
   m_Name: PlayerPrefab
   m_TagString: Untagged
@@ -241,10 +242,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
+  _spawned:
+    _value: 0
   _prefabBall: {fileID: 8317655627256842257, guid: 5ab762c8b3ddae746886c52edf589f2a, type: 3}
   _prefabPhysxBall: {fileID: 2077509368410785943, guid: 80f6e73ff93d5d14088bf49caab3fab6, type: 3}
   _delayTime: 0.5
-  _direction: 0
+  _initialHp: 5
 --- !u!143 &905755279091699838
 CharacterController:
   m_ObjectHideFlags: 0
@@ -275,7 +278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 378411a89480da345945c2f888327a2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interpolationDataSource: 0
+  _interpolationDataSource: 2
   InterpolationSpace: 0
   InterpolationTarget: {fileID: 0}
   InterpolateErrorCorrection: 1
@@ -299,3 +302,16 @@ MonoBehaviour:
   rotationSpeed: 15
   _IsGrounded: 0
   _Velocity: {x: 0, y: 0, z: 0}
+--- !u!65 &4814457367942002039
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6310018410371973350}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}

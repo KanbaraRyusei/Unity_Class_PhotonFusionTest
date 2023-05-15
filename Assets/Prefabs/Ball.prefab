@@ -116,6 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
   _lifeTime: 2
+  _power: 1
 --- !u!1 &8317655627706705625
 GameObject:
   m_ObjectHideFlags: 0

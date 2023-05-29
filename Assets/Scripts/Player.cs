@@ -59,6 +59,16 @@ public class Player : NetworkBehaviour
         {
             RPC_SendMessage("Hey Mate!");
         }
+
+        if (Object.HasInputAuthority && Input.GetKeyDown(KeyCode.H))
+        {
+            RPC_SendMessage("Hello");
+        }
+
+        if (Object.HasInputAuthority && Input.GetKeyDown(KeyCode.B))
+        {
+            RPC_SendMessage("Bye");
+        }
     }
 
     private void OnCollisionEnter(Collision collision)

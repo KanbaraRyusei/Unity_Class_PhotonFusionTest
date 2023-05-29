@@ -5,6 +5,9 @@ using Fusion;
 
 public class PhysxBall : NetworkBehaviour
 {
+    [Networked(OnChanged = nameof(OnBallBumped))]
+    public NetworkBool bumped { get; set; }
+
     public int Power => _power;
 
     public bool IsBumped => _isBumped;
@@ -21,6 +24,23 @@ public class PhysxBall : NetworkBehaviour
     private Rigidbody _rb;
 
     private bool _isBumped;
+
+    private Material _material;
+
+    Material material
+    {
+        get
+        {
+            if (_material == null)
+                _material = GetComponentInChildren<MeshRenderer>().material;
+            return _material;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        bumped = true;
+    }
 
     public void Init(Vector3 forward)
     {
@@ -39,5 +59,10 @@ public class PhysxBall : NetworkBehaviour
     public void Bump()
     {
         _isBumped = true;
+    }
+
+    public static void OnBallBumped(Changed<PhysxBall> changed)
+    {
+        changed.Behaviour.material.color = Color.cyan;
     }
 }

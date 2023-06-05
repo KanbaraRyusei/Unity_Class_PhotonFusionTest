@@ -248,6 +248,7 @@ MonoBehaviour:
   _prefabPhysxBall: {fileID: 2077509368410785943, guid: 80f6e73ff93d5d14088bf49caab3fab6, type: 3}
   _delayTime: 0.5
   _initialHp: 5
+  _fireTransform: {fileID: 4866114164320387123}
 --- !u!143 &905755279091699838
 CharacterController:
   m_ObjectHideFlags: 0

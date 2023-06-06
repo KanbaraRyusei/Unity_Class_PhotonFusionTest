@@ -21,6 +21,9 @@ public class Player : NetworkBehaviour
     [SerializeField]
     private int _initialHp;
 
+    [SerializeField]
+    private Transform _fireTransform;
+
     [Networked]
     private TickTimer delay { get; set; }
 
@@ -119,7 +122,7 @@ public class Player : NetworkBehaviour
                       Object.InputAuthority,
                       (runner, o) =>
                       {
-                          o.GetComponent<Ball>().Init();
+                          o.GetComponent<Ball>().Init(_fireTransform.position, _fireTransform.forward);
                       });
                     spawned = !spawned;
                 }

@@ -5,9 +5,19 @@ using Fusion;
 
 public class Ball : NetworkBehaviour, IPredictedSpawnBehaviour
 {
+    public float Speed => _speed;
+
     public int Power => _power;
 
     public bool IsBumped => _isBumped;
+
+    public LayerMask HitMask => _hitMask;
+
+    public float HitImpulse => _hitImpulse;
+
+    public float LifeTime => _lifeTime;
+
+    public float LifeTimeAfterHit => _lifeTimeAfterHit;
 
     [SerializeField]
     private float _speed;
@@ -95,7 +105,7 @@ public class Ball : NetworkBehaviour, IPredictedSpawnBehaviour
 
             if (hit.Collider != null && hit.Collider.attachedRigidbody != null)
             {
-                hit.Collider.attachedRigidbody.AddForce(direction * _hitImpulse, ForceMode.Impulse);
+                //hit.Collider.attachedRigidbody.AddForce(direction * _hitImpulse, ForceMode.Impulse);
             }
         }
     }

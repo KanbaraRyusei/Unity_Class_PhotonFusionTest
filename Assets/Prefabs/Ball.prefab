@@ -122,7 +122,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   _hitImpulse: 5
-  _lifeTimeAfterHit: 2
+  _lifeTimeAfterHit: 1
 --- !u!1 &8317655627706705625
 GameObject:
   m_ObjectHideFlags: 0
